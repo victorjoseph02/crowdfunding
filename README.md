@@ -11,7 +11,7 @@ The goal of this project is to empower individuals to support innovative project
 
 Join me in transforming the crowdfunding landscape and embracing the potential of blockchain technology for financial empowerment and global collaboration.
 
-![image](https://github.com/SURAJPATIL6088/CrowdFunding_Web3.0/assets/78692972/a5820cb5-08e2-4b08-bea2-1d23807a530e) <br>
+![image](https://github.com/victorjoseph02/crowdfunding/blob/master/client/src/assets/Create-Campaign.png) <br>
 _______________________________________________________________________________________________________________________________
 
 ## ❇️ Features

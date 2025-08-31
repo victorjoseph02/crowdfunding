@@ -48,7 +48,7 @@ To make the most of our Web3 Crowd Funding platform, follow these simple steps:
 
 **Create a Campaign**: If you have an innovative project or cause you'd like to fund, click on the `Create Campaign` button. Provide necessary details such as project description, funding goal, and campaign duration.
 
-![image](https://github.com/victorjoseph02/crowdfunding/blob/master/client/src/assets/Create-Camapaign.png) <br>
+![image](https://github.com/victorjoseph02/crowdfunding/blob/master/client/src/assets/Create-Campaign.png) <br>
 _______________________________________________________________________________________________________________________________
 
 

@@ -11,7 +11,7 @@ The goal of this project is to empower individuals to support innovative project
 
 Join me in transforming the crowdfunding landscape and embracing the potential of blockchain technology for financial empowerment and global collaboration.
 
-![image](https://github.com/victorjoseph02/crowdfunding/blob/master/client/src/assets/Create-Campaign.png) <br>
+![image](https://github.com/victorjoseph02/crowdfunding/blob/master/client/src/assets/Dashboard.png) <br>
 _______________________________________________________________________________________________________________________________
 
 ## ❇️ Features
@@ -48,10 +48,9 @@ To make the most of our Web3 Crowd Funding platform, follow these simple steps:
 
 **Create a Campaign**: If you have an innovative project or cause you'd like to fund, click on the `Create Campaign` button. Provide necessary details such as project description, funding goal, and campaign duration.
 
-<br>
-![image](https://github.com/victorjoseph02/crowdfunding/blob/master/client/src/assets/Create-Campaign.png) <br>
-
+![image](https://github.com/victorjoseph02/crowdfunding/blob/master/client/src/assets/Create-Camapaign.png) <br>
 _______________________________________________________________________________________________________________________________
+
 
 
 **Donate**: Find a campaign that resonates with you and click on it to access the campaign page. From there, you can choose to contribute by sending Ethereum directly to the campaign's smart contract address.

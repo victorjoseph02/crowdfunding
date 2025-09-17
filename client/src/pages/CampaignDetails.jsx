@@ -1,16 +1,18 @@
 import React,{useState,useEffect} from 'react'
-import {useLocation} from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {ethers} from 'ethers';
 
 import { useStateContext } from '../context';
-import { CountBox,CustomButton } from '../components';
+import { CountBox,CustomButton,Loader} from '../components';
 import { calculateBarPercentage,daysLeft } from '../utils';
 import {thirdweb} from '../assets';
 
 const CampaignDetails = () => {
   const {state} = useLocation();
   console.log(state);
-  const {getDonations,contract, address} = useStateContext;
+  const navigate = useNavigate();
+  const { donate, getDonations,contract, address} = useStateContext();
+
 
   const [isLoading,setIsLoading] = useState(false);
   const [amount,setAmount] = useState('');
@@ -18,13 +20,28 @@ const CampaignDetails = () => {
 
   const remainingDays = daysLeft(state.deadline);
 
+  const fetchDonators = async () => {
+    const data = await getDonations(state.id);
+
+    setDonators(data);
+  }
+
+  useEffect(() => {
+    if(contract) fetchDonators();
+  }, [contract, address])
+
   const handleDonate = async () => {
-    
+    setIsLoading(true);
+
+    await donate(state.id, amount); 
+
+    navigate('/')
+    setIsLoading(false);
   }
 
   return (
     <div>
-      {isLoading && 'Loading...'}
+      { isLoading && <Loader/> }
 
       <div className='w-full flex md:flex-row flex-col
       mt-10 gap-[30px]'>
@@ -86,8 +103,12 @@ const CampaignDetails = () => {
             <div className='mt-[10px] flex flex-col gap-4'>
               {donators.length > 0 ? donators.map((item,
               index) => (
-                <div>
-                  DONATOR 
+                <div key={`${item.donator}-${index}`} 
+                className='flex items-center gap-4'>
+                  <p className="font-epilogue font-normal text-[16px] text-[#b2b3bd] leading-[26px] break-ll">
+                    {index + 1}. {item.donator}</p>
+                  <p className="font-epilogue font-normal text-[16px] text-[#808191] leading-[26px] break-ll">
+                    {item.donation}</p>
                 </div>
               )) : (
                 <p className='font-epilogue font-normal text-[14px] text-[#808191] 
@@ -109,7 +130,7 @@ const CampaignDetails = () => {
                 <input
                   type='number'
                   placeholder='ETH 0.1'
-                  step='0.01'
+                  step='0.001'
                   className='w-full py-[10px] sm:px-[20px]
                   px-[15px] outline-none border-[1px] border-[#3a3a43]
                   bg-transparent font-epilogue text-white

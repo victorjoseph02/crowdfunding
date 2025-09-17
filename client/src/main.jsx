@@ -16,7 +16,7 @@ import { StateContextProvider } from './context';
 import App from './App';
 import './index.css';
 
-const THIRDWEB_CLIENT_ID = "9aa238081453a427e0d7084a8c927c08"; 
+const THIRDWEB_CLIENT_ID = import.meta.env.VITE_THIRDWEB_CLIENT_ID; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

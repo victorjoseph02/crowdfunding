@@ -20,7 +20,7 @@ export const StateContextProvider = ({ children }) => {
   const connect = useMetamask();
   const sdk = useSDK();
 
-  const contractAddress = "0x9fbff9d6448e34965347d352302b5bb042a40b1f";
+  const contractAddress = import.meta.env.VITE_CONTRACT_ADDRESS;
 
   const [contract, setContract] = useState(null);
   const [contractLoading, setContractLoading] = useState(true);
@@ -234,6 +234,30 @@ export const StateContextProvider = ({ children }) => {
     return filteredCampaigns;
   };
 
+  const donate = async (id, amount) => {
+    const data = await contract.donateToCampaign(id, { value: ethers.utils.parseEther(amount)});
+
+
+    return data;
+  } 
+
+  const getDonations = async (id) => {
+    const donations = await contract.getDonators(id);
+    const numberOfDonations = donations[0].length;
+
+    const parsedDonations = [];
+
+    for(let i = 0; i < numberOfDonations; i++) {
+      parsedDonations.push({
+        donator: donations[0][i],
+        donation: ethers.utils.formatEther(donations[1][i].toString())
+      })
+    }
+
+    return parsedDonations;
+  }
+
+
   return (
     <StateContext.Provider
       value={{
@@ -245,8 +269,11 @@ export const StateContextProvider = ({ children }) => {
         contractLoading,
         contractError,
         isContractReady,
-        getUserCampaigns
-      }}
+        getUserCampaigns,
+        donate,
+        getDonations
+
+      }}  
     >
       {children}
     </StateContext.Provider>
